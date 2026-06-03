@@ -22,3 +22,17 @@ def test_can_use_dot_notation_nested_dict():
     config = Config(nested_config)
     assert config.database.host == nested_config["database"]["host"]
     assert config.database.port == nested_config["database"]["port"]
+
+
+def test_can_load_json_from_path():
+    config = Config.from_json("data/nested_config.json")
+    assert config.database.host == nested_config["database"]["host"]
+    assert config.database.port == nested_config["database"]["port"]
+
+
+def test_can_load_json_from_filelike():
+    with open("data/nested_config.json") as f:
+        config = Config.from_json(f)
+
+    assert config.database.host == nested_config["database"]["host"]
+    assert config.database.port == nested_config["database"]["port"]

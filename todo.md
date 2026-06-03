@@ -5,19 +5,6 @@
 
 # todo
 
-- [x] I want to instantiate a `Config` from a flat dictionary and
-      access its values via dot notation (e.g., `cfg.host`), so that I
-      can read configuration without bracket‑indexing and get
-      immediate value from the package.
-- [x] I want nested dictionaries to be automatically converted to
-      recursive `Config` objects, so that I can access deeply nested
-      values with dot notation (e.g., `cfg.database.host`) without
-      manual wrapping.
-- [ ] I want to load config from a JSON file (via file path or
-      file‑like object), so that I can use a standard,
-      widely‑supported config format instead of hardcoding
-      dictionaries. *(Shortcut: YAML is still hardcoded/missing – will
-      be done in Task 4)*
 - [ ] I want to load config from a YAML file (via file path or
       file‑like object), so that I can use a human‑readable format
       that supports comments and structured data. *(Dependency:
@@ -33,3 +20,19 @@
       `Config(name='test', host='localhost')`), so that I can quickly
       inspect the config in a debugger or log output. *(This can be
       refined later if needed)*
+
+# done
+
+- [x] I want to instantiate a `Config` from a flat dictionary and
+      access its values via dot notation (e.g., `cfg.host`), so that I
+      can read configuration without bracket‑indexing and get
+      immediate value from the package.
+- [x] I want nested dictionaries to be automatically converted to
+      recursive `Config` objects, so that I can access deeply nested
+      values with dot notation (e.g., `cfg.database.host`) without
+      manual wrapping.
+- [x] I want to load config from a JSON file (via file path or
+      file‑like object), so that I can use a standard,
+      widely‑supported config format instead of hardcoding
+      dictionaries. *(Shortcut: YAML is still hardcoded/missing – will
+      be done in Task 4)*
