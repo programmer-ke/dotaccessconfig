@@ -7,6 +7,10 @@ class Config:
 
     def __getattr__(self, name):
         try:
-            return self._config[name]
+            value = self._config[name]
         except KeyError as e:
             raise AttributeError(f"No config '{name}' found.") from e
+
+        if isinstance(value, dict):
+            return Config(value)
+        return value

@@ -9,7 +9,7 @@
       access its values via dot notation (e.g., `cfg.host`), so that I
       can read configuration without bracket‑indexing and get
       immediate value from the package.
-- [ ] I want nested dictionaries to be automatically converted to
+- [x] I want nested dictionaries to be automatically converted to
       recursive `Config` objects, so that I can access deeply nested
       values with dot notation (e.g., `cfg.database.host`) without
       manual wrapping.
