@@ -3,6 +3,8 @@
 import json
 from pathlib import Path
 
+import yaml
+
 
 class Config:
     def __init__(self, config: dict):
@@ -10,15 +12,25 @@ class Config:
 
     @classmethod
     def from_json(cls, file):
+        data = cls._get_data(file, json.load)
+        return cls(data)
+
+    @classmethod
+    def from_yaml(cls, file):
+        data = cls._get_data(file, yaml.safe_load)
+        return cls(data)
+
+    @staticmethod
+    def _get_data(source, loader):
         try:
-            filepath = Path(file)
+            filepath = Path(source)
         except TypeError:
             # treat as filelike
-            data = json.load(file)
+            data = loader(source)
         else:
             with open(filepath) as f:
-                data = json.load(f)
-        return cls(data)
+                data = loader(f)
+        return data
 
     def __getattr__(self, name):
         try:

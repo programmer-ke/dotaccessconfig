@@ -5,10 +5,6 @@
 
 # todo
 
-- [ ] I want to load config from a YAML file (via file path or
-      file‑like object), so that I can use a human‑readable format
-      that supports comments and structured data. *(Dependency:
-      `pyyaml`)*
 - [ ] I want dictionaries inside lists to also be converted to
       `Config` objects, so that I can access fields of list‑item
       configs with dot notation (e.g., `cfg.users[0].name`).
@@ -36,3 +32,7 @@
       widely‑supported config format instead of hardcoding
       dictionaries. *(Shortcut: YAML is still hardcoded/missing – will
       be done in Task 4)*
+- [x] I want to load config from a YAML file (via file path or
+      file‑like object), so that I can use a human‑readable format
+      that supports comments and structured data. *(Dependency:
+      `pyyaml`)*

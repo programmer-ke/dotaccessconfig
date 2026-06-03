@@ -36,3 +36,17 @@ def test_can_load_json_from_filelike():
 
     assert config.database.host == nested_config["database"]["host"]
     assert config.database.port == nested_config["database"]["port"]
+
+
+def test_can_load_yaml_from_path():
+    config = Config.from_yaml("data/nested_config.yaml")
+    assert config.database.host == "example.org"
+    assert config.database.port == 1234
+
+
+def test_can_load_yaml_from_filelike():
+    with open("data/nested_config.yaml") as f:
+        config = Config.from_yaml(f)
+
+    assert config.database.host == "example.org"
+    assert config.database.port == 1234
