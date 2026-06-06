@@ -55,13 +55,13 @@ project.
 You can also load configs from JSON or YAML paths of file-like objects:
 
 
-    with open("data/nested_config.yaml") as f:
+    with open("examples/nested_config.yaml") as f:
         config = Config.from_yaml(f)
 	
     ...
 	
 	
-	config = Config.from_json("data/nested_config.json")
+	config = Config.from_json("examples/nested_config.json")
 	...
 
 
