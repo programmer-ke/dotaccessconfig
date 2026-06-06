@@ -15,7 +15,7 @@ def test_can_use_dot_notation_on_flat_dict():
 def test_missing_config_name_raises():
     config = Config(flat_config)
     with pytest.raises(AttributeError):
-        config.port
+        _ = config.port
 
 
 def test_can_use_dot_notation_nested_dict():
