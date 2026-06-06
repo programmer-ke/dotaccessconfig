@@ -14,7 +14,7 @@ class Config:
     'localhost'
     >>> config.database.port
     5432
-    
+
     Supports loading JSON/YAML
     """
 
@@ -34,7 +34,7 @@ class Config:
 
     @classmethod
     def from_yaml(cls, file):
-        """Load from YAML file"""        
+        """Load from YAML file"""
         data = cls._get_data(file, yaml.safe_load)
         return cls(data)
 
@@ -62,7 +62,10 @@ class Config:
         return value
 
     def __getitem__(self, name):
-        return self._config[name]
+        value = self._config[name]
+        if isinstance(value, (list, dict)):
+            return Config(value)
+        return value
 
     def __str__(self):
         return json.dumps(self._config)

@@ -104,3 +104,12 @@ def test_invalid_python_identifiers():
     config = Config(d)
     assert config["some-key"] == d["some-key"]
     assert config[2] == d[2]
+
+
+def test_nested_beneath_non_identifier():
+    nested_beneath_non_identifier = {
+        "backup-databases": [{"host": "backup1"}, {"host": "backup2"}]
+    }
+    config = Config(nested_beneath_non_identifier)
+
+    assert config["backup-databases"][0].host == "backup1"
