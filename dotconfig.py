@@ -7,6 +7,16 @@ import yaml
 
 
 class Config:
+    """Wrapper for nested config with dot-notation access.
+
+    >>> config = Config({"database": {"host": "localhost", "port": 5432}})
+    >>> config.database.host
+    'localhost'
+    >>> config.database.port
+    5432
+    
+    Supports loading JSON/YAML
+    """
 
     def __new__(cls, config):
         if isinstance(config, list):
@@ -18,16 +28,19 @@ class Config:
 
     @classmethod
     def from_json(cls, file):
+        """Load from JSON file"""
         data = cls._get_data(file, json.load)
         return cls(data)
 
     @classmethod
     def from_yaml(cls, file):
+        """Load from YAML file"""        
         data = cls._get_data(file, yaml.safe_load)
         return cls(data)
 
     @staticmethod
     def _get_data(source, loader):
+        """Load data from file object or path"""
         try:
             filepath = Path(source)
         except TypeError:
