@@ -47,3 +47,13 @@ class Config:
         if isinstance(value, (dict, list)):
             return Config(value)
         return value
+
+    def __getitem__(self, name):
+        return self._config[name]
+
+    def __str__(self):
+        return json.dumps(self._config)
+
+    def __repr__(self):
+        cls_name = type(self).__name__
+        return f"{cls_name}({self._config!r})"

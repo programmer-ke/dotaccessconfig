@@ -96,3 +96,11 @@ def test_mixed_list_items():
     assert config.zones[0] == 1
     assert config.zones[2].name == 3
     assert config.zones[3][1] == 3
+
+
+def test_invalid_python_identifiers():
+
+    d = {"some-key": "someval", 2: "123"}
+    config = Config(d)
+    assert config["some-key"] == d["some-key"]
+    assert config[2] == d[2]
