@@ -5,9 +5,6 @@
 
 # todo
 
-- [ ] I want dictionaries inside lists to also be converted to
-      `Config` objects, so that I can access fields of list‑item
-      configs with dot notation (e.g., `cfg.users[0].name`).
 - [ ] I want to access configuration keys that are not valid Python
       identifiers (e.g., `"some-key"`, `"123invalid"`) via
       `__getitem__` only, so that I can still retrieve values from
@@ -36,3 +33,6 @@
       file‑like object), so that I can use a human‑readable format
       that supports comments and structured data. *(Dependency:
       `pyyaml`)*
+- [x] I want dictionaries inside lists to also be converted to
+      `Config` objects, so that I can access fields of list‑item
+      configs with dot notation (e.g., `cfg.users[0].name`).

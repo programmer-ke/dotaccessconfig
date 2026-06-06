@@ -7,6 +7,12 @@ import yaml
 
 
 class Config:
+
+    def __new__(cls, config):
+        if isinstance(config, list):
+            return [cls(c) if isinstance(c, (list, dict)) else c for c in config]
+        return super().__new__(cls)
+
     def __init__(self, config: dict):
         self._config = config
 
@@ -38,6 +44,6 @@ class Config:
         except KeyError as e:
             raise AttributeError(f"No config '{name}' found.") from e
 
-        if isinstance(value, dict):
+        if isinstance(value, (dict, list)):
             return Config(value)
         return value
