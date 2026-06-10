@@ -54,7 +54,7 @@ print(config.app.features.notifications)  # ["email", "sms"]
 print(config.app["some-key"])    # "some value"
 ```
 
-You can also load configs from JSON or YAML paths of file-like objects:
+You can also load configs from JSON or YAML paths or file-like objects:
 
 ```python
 with open("examples/nested_config.yaml") as f:
